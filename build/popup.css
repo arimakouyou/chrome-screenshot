@@ -1,0 +1,19 @@
+body {
+  width: 200px;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+button {
+  width: 90%;
+  margin: 5px auto;
+  padding: 8px;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f0f0f0;
+}

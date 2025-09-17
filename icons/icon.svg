@@ -1,0 +1,25 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="#4285F4" stroke="#2563EB" stroke-width="4"/>
+  
+  <!-- Camera body -->
+  <rect x="32" y="45" width="64" height="38" rx="6" fill="white"/>
+  <rect x="35" y="48" width="58" height="32" rx="4" fill="#F8F9FA"/>
+  
+  <!-- Lens -->
+  <circle cx="64" cy="64" r="12" fill="#5F6368"/>
+  <circle cx="64" cy="64" r="8" fill="#202124"/>
+  <circle cx="66" cy="62" r="2" fill="#9AA0A6"/>
+  
+  <!-- Flash -->
+  <rect x="78" y="38" width="8" height="6" rx="2" fill="#FBBC04"/>
+  
+  <!-- Viewfinder -->
+  <rect x="88" y="38" width="6" height="4" rx="1" fill="#34A853"/>
+  
+  <!-- Screenshot effect lines -->
+  <path d="M20 20 L40 20 M20 20 L20 40" stroke="#FF6D01" stroke-width="3" stroke-linecap="round"/>
+  <path d="M108 20 L88 20 M108 20 L108 40" stroke="#FF6D01" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 108 L40 108 M20 108 L20 88" stroke="#FF6D01" stroke-width="3" stroke-linecap="round"/>
+  <path d="M108 108 L88 108 M108 108 L108 88" stroke="#FF6D01" stroke-width="3" stroke-linecap="round"/>
+</svg>

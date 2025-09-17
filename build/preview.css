@@ -1,0 +1,38 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+#image-container {
+  margin: 20px auto;
+  border: 2px dashed #ccc;
+  padding: 10px;
+  max-width: 90vw;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#preview-image {
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+#actions button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+}
+
+#actions button:hover {
+  background-color: #f0f0f0;
+}
