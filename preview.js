@@ -1,10 +1,20 @@
+/**
+ * @fileoverview Preview page controller for Screenshot Extension  
+ * Handles screenshot display, download, and clipboard operations
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
+  // DOM elements for preview functionality
   const imageElement = document.getElementById('preview-image');
   const downloadButton = document.getElementById('download');
   const copyButton = document.getElementById('copy');
-  let pageTitle = 'screenshot'; // Default title
+  let pageTitle = 'screenshot'; // Default title for file naming
 
-  // Function to initialize the page with image data
+  /**
+   * Initialize preview page with screenshot data
+   * @param {string} dataUrl - Base64 encoded image data
+   * @param {string} title - Page title for filename generation
+   */
   function initialize(dataUrl, title) {
     imageElement.src = dataUrl;
     pageTitle = title || 'screenshot';
@@ -25,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Download handler - creates timestamped filename
   downloadButton.addEventListener('click', () => {
     const now = new Date();
     const datetime = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}`;
@@ -36,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     link.click();
   });
 
+  // Clipboard handler - uses Clipboard API for image copy
   copyButton.addEventListener('click', async () => {
     if (!imageElement.src) return;
     try {

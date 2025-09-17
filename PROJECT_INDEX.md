@@ -5,12 +5,13 @@
 ### 🎯 プロジェクト概要
 - [README](README.md) - プロジェクトの基本情報とセットアップ手順
 - [PROJECT_INDEX.md](PROJECT_INDEX.md) - このファイル（ナビゲーション用インデックス）
+- [USAGE_GUIDE.md](USAGE_GUIDE.md) - 詳細な使用方法と操作ガイド
 
 ### 📋 仕様書・設計書
 - [.kiro/specs/screenshot-chrome-extension/requirements.md](.kiro/specs/screenshot-chrome-extension/requirements.md) - 要求仕様書
 - [.kiro/specs/screenshot-chrome-extension/design.md](.kiro/specs/screenshot-chrome-extension/design.md) - 設計仕様書  
 - [.kiro/specs/screenshot-chrome-extension/tasks.md](.kiro/specs/screenshot-chrome-extension/tasks.md) - 実装タスク管理
-- [API.md](API.md) - 内部API仕様とメッセージフロー定義
+- [API.md](API.md) - 内部API仕様とメッセージフロー定義（シーケンス図・エラーハンドリング込み）
 
 ### 🔧 開発ガイド
 - [CLAUDE.md](CLAUDE.md) - Claude開発者向け指示書

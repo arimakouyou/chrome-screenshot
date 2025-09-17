@@ -1,10 +1,24 @@
+/**
+ * @fileoverview Background service worker for Screenshot Extension
+ * Handles screenshot capture orchestration, tab management, and message routing
+ */
+
+/** Offscreen document path for Canvas operations */
 const OFFSCREEN_DOCUMENT_PATH = '/offscreen.html';
 
+/**
+ * Check if offscreen document is already active
+ * @returns {Promise<boolean>} True if offscreen document exists
+ */
 async function hasOffscreenDocument() {
     const matchedClients = await clients.matchAll();
     return matchedClients.some(c => c.url.endsWith(OFFSCREEN_DOCUMENT_PATH));
 }
 
+/**
+ * Create offscreen document for Canvas-based image processing
+ * Required for image cropping and stitching operations
+ */
 async function setupOffscreenDocument() {
     if (!(await hasOffscreenDocument())) {
         await chrome.offscreen.createDocument({
@@ -15,6 +29,10 @@ async function setupOffscreenDocument() {
     }
 }
 
+/** 
+ * In-memory storage for screenshot data indexed by tab ID
+ * @type {Object<number, {dataUrl: string, title: string}>}
+ */
 let screenshotData = {};
 
 chrome.runtime.onMessage.addListener(async (request, sender) => {
@@ -105,6 +123,10 @@ chrome.runtime.onMessage.addListener(async (request, sender) => {
   }
 });
 
+/**
+ * Capture full page by scrolling and stitching multiple screenshots
+ * Handles fixed/sticky elements and scrollbar exclusion
+ */
 async function captureFullPage() {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   if (!tab) {

@@ -1,9 +1,15 @@
+/**
+ * @fileoverview Content script for area selection capture
+ * Creates interactive overlay for user-defined screenshot regions
+ */
+
 (() => {
-  // Prevent multiple injections
+  // Prevent multiple injections of overlay
   if (document.getElementById('screenshot-overlay')) {
     return;
   }
 
+  // Create full-screen overlay for area selection
   const overlay = document.createElement('div');
   overlay.id = 'screenshot-overlay';
   Object.assign(overlay.style, {
@@ -18,6 +24,7 @@
   });
   document.body.appendChild(overlay);
 
+  // Selection state and visual indicator
   let startX, startY, isDrawing = false;
   const selectionBox = document.createElement('div');
   selectionBox.id = 'screenshot-selection-box';
@@ -59,6 +66,7 @@
     if (!isDrawing) return;
     isDrawing = false;
 
+    // Extract selection coordinates for screenshot capture
     const rect = {
         x: parseInt(selectionBox.style.left),
         y: parseInt(selectionBox.style.top),

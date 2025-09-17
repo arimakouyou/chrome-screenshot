@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Offscreen worker for Canvas-based image processing
+ * Handles image cropping and stitching operations in isolated environment
+ */
+
 chrome.runtime.onMessage.addListener(async (request) => {
   if (request.action === 'cropImage') {
     await handleCropImage(request);
@@ -6,6 +11,17 @@ chrome.runtime.onMessage.addListener(async (request) => {
   }
 });
 
+/**
+ * Crop image to specified area with device pixel ratio scaling
+ * @param {Object} params - Crop parameters
+ * @param {string} params.dataUrl - Source image data URL
+ * @param {Object} params.area - Crop area specification
+ * @param {number} params.area.x - X coordinate (CSS pixels)
+ * @param {number} params.area.y - Y coordinate (CSS pixels) 
+ * @param {number} params.area.width - Width (CSS pixels)
+ * @param {number} params.area.height - Height (CSS pixels)
+ * @param {number} params.area.devicePixelRatio - Device pixel ratio
+ */
 async function handleCropImage({ dataUrl, area }) {
   const dpr = area.devicePixelRatio || 1;
   const scaledArea = {
@@ -43,6 +59,16 @@ async function handleCropImage({ dataUrl, area }) {
   reader.readAsDataURL(outputBlob);
 }
 
+/**
+ * Stitch multiple screenshots into single full-page image
+ * @param {Object} params - Stitch parameters
+ * @param {string[]} params.captures - Array of screenshot data URLs
+ * @param {Object} params.pageDimensions - Page dimension data
+ * @param {number} params.pageDimensions.pageHeight - Total page height
+ * @param {number} params.pageDimensions.viewportHeight - Viewport height
+ * @param {number} params.pageDimensions.scrollbarWidth - Scrollbar width
+ * @param {number} params.pageDimensions.devicePixelRatio - Device pixel ratio
+ */
 async function handleStitchImages({ captures, pageDimensions }) {
     const { pageHeight, viewportHeight, scrollbarWidth, devicePixelRatio } = pageDimensions;
 
